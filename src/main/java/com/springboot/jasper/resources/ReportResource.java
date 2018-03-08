@@ -37,10 +37,16 @@ public class ReportResource {
     }
 
 
+    /**
+     * Endpoint for generating simple PDF report
+     *
+     * @param report - report data
+     * @return byte array resource (generated file in bytes)
+     */
     @PostMapping(value = "/pdf", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ByteArrayResource> generateSimplePDFReport(@Valid @RequestBody Report report)
     {
-        LOGGER.info("Received payload: {}", report);
+        LOGGER.info("Payload for generating simple PDF report: {}", report);
         try
         {
             ByteArrayResource byteArrayResource = reportService.generateSimpleReport(report, ExportReportType.PDF);
@@ -51,10 +57,16 @@ public class ReportResource {
         }
     }
 
+    /**
+     * Endpoint for generating simple DOCx report
+     *
+     * @param report - report data
+     * @return byte array resource (generated file in bytes)
+     */
     @PostMapping(value = "/docx", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ByteArrayResource> generateSimpleDOCxReport(@Valid @RequestBody Report report)
     {
-        LOGGER.info("Received payload data: {}", report);
+        LOGGER.info("Payload for generating simple DOCx report: {}", report);
         try
         {
             ByteArrayResource byteArrayResource = reportService.generateSimpleReport(report, ExportReportType.DOCX);
@@ -65,10 +77,16 @@ public class ReportResource {
         }
     }
 
+    /**
+     * Endpoint for generating report with table data source
+     *
+     * @param reportDataSource - report data source
+     * @return byte array resource (generated file in bytes)
+     */
     @PostMapping(value = "/data-source", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ByteArrayResource> generateDataSourceReport(@Valid @RequestBody List<Report> reportDataSource)
     {
-        LOGGER.info("Received payload data: {}", reportDataSource);
+        LOGGER.info("Payload for generating report with data source: {}", reportDataSource);
         try
         {
             ByteArrayResource byteArrayResource = reportService.generateDataSourceReport(
