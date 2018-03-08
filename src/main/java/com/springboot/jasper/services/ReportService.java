@@ -76,7 +76,7 @@ public class ReportService {
         Map<String, Object> reportParameters = new HashMap<>();
 
         JRBeanCollectionDataSource itemsJRBean = new JRBeanCollectionDataSource(reportList, true);
-        reportParameters.put("CUSTOM_SOURCE_DATA", itemsJRBean);
+        reportParameters.put(ReportParams.PARAM_CUSTOM_DATA_SOURCE, itemsJRBean);
 
         // generate reports based on export type.
         switch (exportReportType)
